@@ -20,7 +20,7 @@ clone() {
   git clone --recursive --depth=50 --branch=osh \
     https://github.com/akinomyoga/ble.sh $out
   git clone --depth=50 \
-    https://github.com/akinomyoga/contra.git $out/ext/contra.src
+    https://github.com/akinomyoga/contra.git "$out"/ext/contra.src
 }
 
 build() {
@@ -28,7 +28,7 @@ build() {
   cd $BASE_DIR
   make
 
- # make contra for test
+  # make contra for test
   cd ext/contra.src
   make
   cp src/contra ..
@@ -93,9 +93,8 @@ done
 exit
 EOF
 
-  #wc -l oshrc.test-util
   #wc -l out/ble.osh
-  #wc -l lib/test-util.sh
+  #wc -l lib/test-*.sh
 
   # Shorter tests
   $osh --rcfile $myscript -i | filter-ansi
